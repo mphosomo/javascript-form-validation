@@ -7,6 +7,60 @@
 }
 
 .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 100vh;
   width: 100%;
+  background-color: black;
+}
+
+body {
+  font-family: sans-serif, monospace, Arial;
+}
+
+h2 {
+  margin-bottom: 10px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 300px;
+  padding: 15px 10px;
+  border-radius: 10px;
+  background-color: white;
+}
+
+input,
+select {
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  height: 40px;
+  border: 1px solid black;
+  border-radius: 5px;
+  outline: none;
+}
+
+input:focus:invalid {
+  border: 1px solid red;
+}
+
+input:invalid {
+  border: 1px solid red;
+}
+
+input {
+  padding: 10px;
+}
+
+button {
+  width: 40%;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: dodgerblue;
+  cursor: pointer;
 }
