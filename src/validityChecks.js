@@ -31,15 +31,14 @@ export function checkPostalCode() {
       postalCodeInput.reportValidity();
     }
   } else {
-    postalCodeInput.setAttribute("minlength", 4);
-
-    if (postalCodeInput.validity.tooShort) {
+    if (postalCodeInput.value.length >= 4) {
+      postalCodeInput.setCustomValidity("");
+    } else {
       postalCodeInput.setCustomValidity(
         "No official postal code format available; Postal code must be at least 4 digits",
       );
+
       postalCodeInput.reportValidity();
-    } else {
-      postalCodeInput.setCustomValidity("");
     }
   }
 }
