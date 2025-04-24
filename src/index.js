@@ -6,6 +6,7 @@ import {
   checkPostalCode,
   checkPassword,
   checkConfirmPassword,
+  checkInvalid,
 } from "./validityChecks";
 
 const form = document.querySelector("form");
@@ -24,6 +25,7 @@ window.onload = () => {
   document
     .querySelector("#confirm-password")
     .addEventListener("input", checkConfirmPassword);
+  document.querySelector("form").addEventListener("submit", checkInvalid);
 };
 
 form.addEventListener("submit", (e) => {

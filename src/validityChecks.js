@@ -46,3 +46,43 @@ export function checkPostalCode() {
 export function checkPassword() {}
 
 export function checkConfirmPassword() {}
+
+export function checkInvalid() {
+  const email = document.querySelector("#email");
+  const postalCode = document.querySelector("#postal-code");
+  const password = document.querySelector("#password");
+  const confirmPassword = document.querySelector("#confirm-password");
+
+  const country = document.querySelector("#country");
+
+  const submit = document.querySelector("#submit");
+
+  const inputElementsArr = [email, postalCode, password, confirmPassword];
+
+  const form = document.querySelector("form");
+
+  if (!form.checkValidity()) {
+    inputElementsArr.forEach((element) => {
+      if (element.validity.valueMissing) {
+        submit.setCustomValidity(
+          "Check empty inputs (Highlighted in red) - Inputs may not be empty.",
+        );
+        submit.reportValidity();
+      } else if (!element.validity.valid) {
+        submit.setCustomValidity(
+          "Some inputs contain invalid values (Highlighted in red",
+        );
+        submit.reportValidity();
+      } else {
+        element.setCustomValidity("");
+      }
+    });
+
+    if (country.value === "none") {
+      country.setCustomValidity("Select a country.");
+      country.reportValidity();
+    } else {
+      country.setCustomValidity("");
+    }
+  }
+}
