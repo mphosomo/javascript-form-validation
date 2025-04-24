@@ -54,7 +54,7 @@ export function checkPassword() {
   const atLeastOneSpecialCharConstraint = new RegExp(`(?=.*[@#$%^&+=])`, "");
 
   if (password.validity.tooShort) {
-    password.setCustomValidity("Password must contain at leat 8 characters.");
+    password.setCustomValidity("Password must contain at least 8 characters.");
     password.reportValidity();
   } else if (!atLeastOneUpperCaseConstraint.test(password.value)) {
     password.setCustomValidity(
@@ -79,7 +79,22 @@ export function checkPassword() {
   }
 }
 
-export function checkConfirmPassword() {}
+export function checkConfirmPassword() {
+  const confirmPassword = document.querySelector("#confirm-password");
+  const password = document.querySelector("#password");
+
+  if (confirmPassword.validity.tooShort) {
+    confirmPassword.setCustomValidity(
+      "Password must contain at least 8 characters.",
+    );
+    confirmPassword.reportValidity();
+  } else if (!(confirmPassword.value === password.value)) {
+    confirmPassword.setCustomValidity("Passwords do not match.");
+    confirmPassword.reportValidity();
+  } else {
+    confirmPassword.setCustomValidity("");
+  }
+}
 
 export function checkInvalid() {
   const email = document.querySelector("#email");
