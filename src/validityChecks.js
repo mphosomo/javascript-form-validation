@@ -5,7 +5,9 @@ export function checkEmail() {
   const emailValue = email.value;
 
   if (email.validity.typeMismatch || !emailValue.includes(".")) {
-    email.setCustomValidity("Email must be in the format 'username@domain.tld");
+    email.setCustomValidity(
+      "Email must be in the format 'username@domain.tld'.",
+    );
     email.reportValidity();
   } else {
     email.setCustomValidity("");
@@ -35,7 +37,7 @@ export function checkPostalCode() {
       postalCodeInput.setCustomValidity("");
     } else {
       postalCodeInput.setCustomValidity(
-        "No official postal code format available; Postal code must be at least 4 digits",
+        "No official postal code format available; Postal code must be at least 4 digits.",
       );
 
       postalCodeInput.reportValidity();
@@ -43,7 +45,39 @@ export function checkPostalCode() {
   }
 }
 
-export function checkPassword() {}
+export function checkPassword() {
+  const password = document.querySelector("#password");
+
+  const atLeastOneUpperCaseConstraint = new RegExp(`(?=.*[A-Z])`, "");
+  const atLeastOneLowerCaseConstraint = new RegExp(`(?=.*[a-z])`, "");
+  const atLeastOneNumberConstraint = new RegExp(/\d/, "");
+  const atLeastOneSpecialCharConstraint = new RegExp(`(?=.*[@#$%^&+=])`, "");
+
+  if (password.validity.tooShort) {
+    password.setCustomValidity("Password must contain at leat 8 characters.");
+    password.reportValidity();
+  } else if (!atLeastOneUpperCaseConstraint.test(password.value)) {
+    password.setCustomValidity(
+      "Password must contain at least one uppercase letter.",
+    );
+    password.reportValidity();
+  } else if (!atLeastOneLowerCaseConstraint.test(password.value)) {
+    password.setCustomValidity(
+      "Password must contain at least one lowercase letter.",
+    );
+    password.reportValidity();
+  } else if (!atLeastOneNumberConstraint.test(password.value)) {
+    password.setCustomValidity("Password must contain at least one number.");
+    password.reportValidity();
+  } else if (!atLeastOneSpecialCharConstraint.test(password.value)) {
+    password.setCustomValidity(
+      "Password must contain at least one special character.",
+    );
+    password.reportValidity();
+  } else {
+    password.setCustomValidity("");
+  }
+}
 
 export function checkConfirmPassword() {}
 
