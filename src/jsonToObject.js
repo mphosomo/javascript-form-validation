@@ -18,6 +18,8 @@ postalCodes.forEach(([countryCode, regex]) => {
   };
 });
 
+// When performing regex checks, I can now use constraints.countryCode to get its Regex
+
 function generatePostalCodeMessage(countryCode, regex) {
   let message = `${countryCode} postal code must:`;
 
@@ -67,5 +69,3 @@ function generatePostalCodeMessage(countryCode, regex) {
 
   return message;
 }
-
-// When performing regex checks, I can now use constraints.countryCode to get its Regex
