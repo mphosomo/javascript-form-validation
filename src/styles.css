@@ -44,16 +44,18 @@ select {
   outline: none;
 }
 
+input {
+  padding: 10px;
+
+  transition: all 300ms ease-in-out;
+}
+
 input:focus:invalid {
   border: 1px solid red;
 }
 
 input:invalid {
   border: 1px solid red;
-}
-
-input {
-  padding: 10px;
 }
 
 button {
