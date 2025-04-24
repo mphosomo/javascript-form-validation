@@ -16,14 +16,31 @@ export function checkPostalCode() {
   const postalCodeName = document.querySelector("#country").value;
   const postalCodeInput = document.querySelector("#postal-code");
 
-  const constraint = new RegExp(constraints[postalCodeName], "");
+  // constraints[postalCode] will return 'undefined' if there is no data in postalCodeData.json under the postalCodeName value
+  if (constraints[postalCodeName]) {
+    const constraint = new RegExp(constraints[postalCodeName].regex, "");
 
-  // If the postal code entered by the user follows the constraint, then we don't show any error
-  if (constraint.test(postalCodeInput.value)) {
-    postalCodeInput.setCustomValidity("");
+    // If the postal code entered by the user follows the constraint, then we don't show any error
+    if (constraint.test(postalCodeInput.value)) {
+      postalCodeInput.setCustomValidity("");
+    } else {
+      postalCodeInput.setCustomValidity(
+        constraints[postalCodeName].customMessage,
+      );
+
+      postalCodeInput.reportValidity();
+    }
   } else {
-    postalCodeInput.setCustomValidity(constraints[postalCodeName]);
-    postalCodeInput.reportValidity();
+    postalCodeInput.setAttribute("minlength", 4);
+
+    if (postalCodeInput.validity.tooShort) {
+      postalCodeInput.setCustomValidity(
+        "No official postal code format available; Postal code must be at least 4 digits",
+      );
+      postalCodeInput.reportValidity();
+    } else {
+      postalCodeInput.setCustomValidity("");
+    }
   }
 }
 
