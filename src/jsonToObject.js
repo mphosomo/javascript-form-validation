@@ -1,5 +1,3 @@
-// TODO: Add custom message for each postal codes constraint
-
 import postalCodeDataJson from "./postalCodeData.json";
 
 // Turns each element of the object into an array
