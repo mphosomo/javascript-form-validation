@@ -16,7 +16,7 @@ export function checkPostalCode() {
   const postalCodeName = document.querySelector("#country").value;
   const postalCodeInput = document.querySelector("#postal-code");
 
-  // constraints[postalCode] will return 'undefined' if there is no data in postalCodeData.json under the postalCodeName value
+  // constraints[postalCodeName] will return 'undefined' if there is no data in postalCodeData.json under the postalCodeName value, so we should only do the constraint test if constraints[postalCodeName] is defined
   if (constraints[postalCodeName]) {
     const constraint = new RegExp(constraints[postalCodeName].regex, "");
 
