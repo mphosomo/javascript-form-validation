@@ -1,4 +1,5 @@
 import "./styles.css";
+import "./jsonToObject.js";
 
 import {
   checkEmail,
