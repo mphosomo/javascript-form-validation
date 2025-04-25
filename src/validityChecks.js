@@ -133,5 +133,7 @@ export function checkInvalid() {
     } else {
       country.setCustomValidity("");
     }
+  } else {
+    alert("Form is valid!");
   }
 }
